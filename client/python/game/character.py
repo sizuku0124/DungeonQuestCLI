@@ -1,7 +1,8 @@
 class Character:
-    def __init__(self, name, job, hp, mp, attack, defense, agility):
+    def __init__(self, name, job, max_hp, hp, mp, attack, defense, agility):
         self._name = name
         self._job = job
+        self._max_hp = max_hp
         self._hp = hp
         self._mp = mp
         self._attack = attack
@@ -15,6 +16,10 @@ class Character:
     @property
     def job(self):
         return self._job
+
+    @property
+    def max_hp(self):
+        return self._max_hp
 
     @property
     def hp(self):
@@ -43,6 +48,10 @@ class Character:
     @job.setter
     def job(self, value):
         self._job = value
+
+    @max_hp.setter
+    def max_hp(self, value):
+        self._max_hp = max(0, value)
 
     @hp.setter
     def hp(self, value):
