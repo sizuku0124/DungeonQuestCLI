@@ -1,51 +1,65 @@
 class Character:
     def __init__(self, name, job, hp, mp, attack, defense, agility):
-        self.name = name
-        self.job = job
-        self.hp = hp
-        self.mp = mp
-        self.attack = attack
-        self.defense = defense
-        self.agility = agility
+        self._name = name
+        self._job = job
+        self._hp = hp
+        self._mp = mp
+        self._attack = attack
+        self._defense = defense
+        self._agility = agility
 
-    def getName(self):
-        return self.name
+    @property
+    def name(self):
+        return self._name
 
-    def getJob(self):
-        return self.job
+    @property
+    def job(self):
+        return self._job
 
-    def getHp(self):
-        return self.hp
+    @property
+    def hp(self):
+        return self._hp
 
-    def getMp(self):
-        return self.mp
+    @property
+    def mp(self):
+        return self._mp
 
-    def getAttack(self):
-        return self.attack
+    @property
+    def attack(self):
+        return self._attack
 
-    def getDefense(self):
-        return self.defense
+    @property
+    def defense(self):
+        return self._defense
 
-    def getAgility(self):
-        return self.agility
+    @property
+    def agility(self):
+        return self._agility
 
-    def setName(self, name):
-        self.name = name
+    @name.setter
+    def name(self, value):
+        self._name = value
 
-    def setJob(self, job):
-        self.job = job
+    @job.setter
+    def job(self, value):
+        self._job = value
 
-    def setHp(self, hp):
-        self.hp = hp
+    @hp.setter
+    def hp(self, value):
+        self._hp = max(0, value)
 
-    def setMp(self, mp):
-        self.mp = mp
+    @mp.setter
+    def mp(self, value):
+        self._mp = max(0, value)
 
-    def setAttack(self, attack):
-        self.attack = attack
+    @attack.setter
+    def attack(self, value):
+        self._attack = value
 
-    def setDefense(self, defense):
-        self.defense = defense
+    @defense.setter
+    def defense(self, value):
+        self._defense = value
 
-    def setAgility(self, agility):
-        self.agility = agility
+    @agility.setter
+    def agility(self, value):
+        self._agility = value
