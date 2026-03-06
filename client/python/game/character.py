@@ -1,5 +1,19 @@
 class Character:
-    def __init__(self, name, job, level, exp, max_hp, hp, mp, attack, defense, agility):
+    def __init__(
+        self,
+        name,
+        job,
+        level,
+        exp,
+        max_hp,
+        hp,
+        mp,
+        attack,
+        defense,
+        agility,
+        skill_list,
+        inventory,
+    ):
         self._name = name
         self._job = job
         self._level = level
@@ -10,6 +24,8 @@ class Character:
         self._attack = attack
         self._defense = defense
         self._agility = agility
+        self._skill_list = skill_list
+        self._inventory = inventory
 
     # ── name ──────────────────────────────────────────
     @property
@@ -100,6 +116,24 @@ class Character:
     @agility.setter
     def agility(self, value):
         self._agility = value
+
+    # ── skill_list ───────────────────────────────────────
+    @property
+    def skill_list(self):
+        return self._skill_list
+
+    @skill_list.setter
+    def skill_list(self, value):
+        self._skill_list = value
+
+    # ── skill_list ───────────────────────────────────────
+    @property
+    def inventory(self):
+        return self._inventory
+
+    @inventory.setter
+    def inventory(self, value):
+        self._inventory = value
 
     # ── 便利メソッド ──────────────────────────────────
     def is_alive(self):

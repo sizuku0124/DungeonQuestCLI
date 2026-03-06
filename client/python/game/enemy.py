@@ -11,6 +11,7 @@ class Enemy:
         level,
         drop_exp,
         drop_items,
+        skill_list,
     ):
         self._name = name
         self._max_hp = max_hp
@@ -22,6 +23,7 @@ class Enemy:
         self._level = level
         self._drop_exp = drop_exp
         self._drop_items = drop_items
+        self._skill_list = skill_list
 
     # ── name ──────────────────────────────────────────
     @property
@@ -112,6 +114,15 @@ class Enemy:
     @drop_items.setter
     def drop_items(self, value):
         self._drop_items = value
+
+    # ── skill_list ───────────────────────────────────────
+    @property
+    def skill_list(self):
+        return self._skill_list
+
+    @skill_list.setter
+    def skill_list(self, value):
+        self._skill_list = value
 
     # ── 便利メソッド ──────────────────────────────────
     def is_alive(self):
