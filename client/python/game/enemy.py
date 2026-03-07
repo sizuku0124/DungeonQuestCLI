@@ -1,31 +1,29 @@
-class Character:
+class Enemy:
     def __init__(
         self,
         name,
-        job,
-        level,
-        exp,
         max_hp,
         hp,
         mp,
         attack,
         defense,
         agility,
+        level,
+        drop_exp,
+        drop_items,
         skill_list,
-        inventory,
     ):
         self._name = name
-        self._job = job
-        self._level = level
-        self._exp = exp
         self._max_hp = max_hp
         self._hp = hp
         self._mp = mp
         self._attack = attack
         self._defense = defense
         self._agility = agility
+        self._level = level
+        self._drop_exp = drop_exp
+        self._drop_items = drop_items
         self._skill_list = skill_list
-        self._inventory = inventory
 
     # ── name ──────────────────────────────────────────
     @property
@@ -35,33 +33,6 @@ class Character:
     @name.setter
     def name(self, value):
         self._name = value
-
-    # ── job ───────────────────────────────────────────
-    @property
-    def job(self):
-        return self._job
-
-    @job.setter
-    def job(self, value):
-        self._job = value
-
-    # ── level ─────────────────────────────────────────
-    @property
-    def level(self):
-        return self._level
-
-    @level.setter
-    def level(self, value):
-        self._level = max(1, value)  # レベルは1以上
-
-    # ── exp ───────────────────────────────────────────
-    @property
-    def exp(self):
-        return self._exp
-
-    @exp.setter
-    def exp(self, value):
-        self._exp = max(0, value)  # 経験値は0以上
 
     # ── max_hp ────────────────────────────────────────
     @property
@@ -117,6 +88,33 @@ class Character:
     def agility(self, value):
         self._agility = value
 
+    # ── level ─────────────────────────────────────────
+    @property
+    def level(self):
+        return self._level
+
+    @level.setter
+    def level(self, value):
+        self._level = max(1, value)  # レベルは1以上
+
+    # ── drop_exp ──────────────────────────────────────
+    @property
+    def drop_exp(self):
+        return self._drop_exp
+
+    @drop_exp.setter
+    def drop_exp(self, value):
+        self._drop_exp = max(0, value)  # 経験値は0以上
+
+    # ── drop_items ────────────────────────────────────
+    @property
+    def drop_items(self):
+        return self._drop_items
+
+    @drop_items.setter
+    def drop_items(self, value):
+        self._drop_items = value
+
     # ── skill_list ───────────────────────────────────────
     @property
     def skill_list(self):
@@ -125,15 +123,6 @@ class Character:
     @skill_list.setter
     def skill_list(self, value):
         self._skill_list = value
-
-    # ── skill_list ───────────────────────────────────────
-    @property
-    def inventory(self):
-        return self._inventory
-
-    @inventory.setter
-    def inventory(self, value):
-        self._inventory = value
 
     # ── 便利メソッド ──────────────────────────────────
     def is_alive(self):
