@@ -24,7 +24,9 @@ class battle:
 
     @staticmethod
     def attack(owner, target):
-        damage = (max(owner.attack - target.defense, 0)) * random.uniform(0.8, 1.2)
+        damage = round(
+            (max(owner.attack - target.defense, 0)) * random.uniform(0.8, 1.2)
+        )
         target.hp = max(0, target.hp - damage)
         print(f"{target.name}に{damage}ダメージ")
         return 0
@@ -34,7 +36,9 @@ class battle:
         i = 0
         print("スキルを選択")
         for skill in owner.skill_list:
-            print(f"{i} {skill}")
+            print(
+                f"{i} {skill['name']} MP:{skill['mp']}\n{skill['status']}:{skill['amount']}"
+            )
             i = i + 1
 
         num = selecter("", "", len(owner.skill_list) - 1)
@@ -50,8 +54,9 @@ class battle:
         elif cast_skill["status"] == "agility":
             owner.agility = owner.agility + cast_skill["amount"]
         elif cast_skill["status"] == "damage":
-            damage = (max(cast_skill["amount"] - target.defense, 0)) * random.uniform(
-                0.8, 1.2
+            damage = round(
+                (max(cast_skill["amount"] - target.defense, 0))
+                * random.uniform(0.8, 1.2)
             )
             target.hp = max(0, target.hp - damage)
 
@@ -109,7 +114,10 @@ class battle:
     def start(self):
         number = -1
         while True:
-            print(f"Turn {self.turn}")
+            print(f"\nTurn {self.turn}")
+            print(
+                f"HP:{self.character.hp}/{self.character.max_hp}  MP:{self.character.mp}"
+            )
             if self.agility_judge():
                 number = self.player_turn()
                 if not self.enemy.is_alive() or number == 2:
